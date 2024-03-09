@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon Landing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&display=swap');
+    body {
+      background: linear-gradient(1deg, #755687, #322466);
+      margin-top: 0px;
+      color:white;
+    }
+    h3,h1,h2,p {
+      font-family: 'Google Sans', sans-serif;
+    }
+    /*custom local font*/
+    @font-face {
+      font-family: 'NAXA';
+      src: url('/resource/NexaBold.ttf') format('truetype');
+    }
+    /* Scroll bar customization */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+    /* Other styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .background {
+      background-image: url('/resource/slide1.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+    }
+    .dark-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2); /* Adjust the alpha value for darkness */
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.326);
+      z-index: 1;
+      padding : 20px;
+      width: 80%;
+      border-radius: 6px;
+      font-family: 'NAXA', sans-serif;
+    }
+    .content h1 {
+      font-size: 3rem;
+      margin-top: 0;
+    }
+    .logo {
+      width: 200px; /* Adjust size as needed */
+      height: auto;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 95%;
+      background-color: #333;
+      z-index: 1000; /* Ensure the navbar is above other content */
+      /*ensure navbar is centered*/
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 100px;
+      margin-top: 10px;
+      box-shadow: #2f2f2f 0px 0px 10px 0px;
+    }
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border-radius: 100px;
+    }
+    .navbar li {
+      float: left;
+    }
+    .navbar li a {
+      display: block;
+      font-weight:10px;
+      font-size: 25px;
+      font-family: 'Google Sans', sans-serif;
+      color: white;
+      text-align: center;
+      padding: 8px 10px;
+      text-decoration: none;
+    }
+    .navbar li a:hover {
+      background-color: #111;
+    }
+    /* Add this at the end of your CSS file */
+    /* Media query for screens smaller than 768px */
+    @media screen and (max-width: 768px) {
+      .content {
+        width: 90%; /* Adjust width for smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+      }
+    }
+    /* Media query for screens smaller than 576px */
+    @media screen and (max-width: 576px) {
+      .navbar ul {
+        padding: 0 10px; /* Adjust padding for smaller screens */
+      }
+      .navbar li a {
+        font-size: 18px; /* Adjust font size for smaller screens */
+      }
+      .content {
+        width: 95%; /* Adjust width for smaller screens */
+      }
+      .logo {
+        width: 150px; /* Adjust logo size for smaller screens */
+      }
+      .content h1 {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+      }
+      .content h2 {
+        font-size: 20px; /* Adjust font size for smaller screens */
+      }
+    }
+    /* Media query for screens smaller than 320px */
+    @media screen and (max-width: 320px) {
+      .navbar li a {
+        font-size: 16px; /* Further adjust font size for smaller screens */
+      }
+      .content h1 {
+        font-size: 1.5rem; /* Further adjust font size for smaller screens */
+      }
+      .content h2 {
+        font-size: 18px; /* Further adjust font size for smaller screens */
+      }
+    }
+    .body {
+      color: white;
+      font-family: 'source sans pro', sans-serif;
+      margin: 20px;
+    }
+    .content button {
+      background-color: #ca3b48; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      border-radius: 100px;
+    }
+    .ibox {
+      background-color: #61616164;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      width: 700px;
+    }
+    footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 300px;
+    }
+
+    /* Add styles for transparent and blurred divs */
+    .transparent-blurred {
+      background-color: rgba(0, 0, 0, 0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    /* Additional styling for judges, sponsors, and contact */
+    .judge {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .judge img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .sponsor {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .sponsor img {
+      width: 130px;
+      height: 100px;
+    }
+
+    .contact {
+      text-align: center;
+    }
+    a{
+      text-decoration: none;
+      color: rgb(163, 247, 255);
+    }
+    
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+    width:400px;
+    background-color: black;
+    color: white;
+    border-radius:10px;
+  }
+  .image-container {
+    border-radius: 10px ;
+    overflow: hidden;
+    margin: 20px 5px 20px 5px;
+    width: 40%;
+    height: 90%;
+    background-color: #ffffff;
+  }
+  .image-container img {
+    border-radius: 10px;
+    padding-top:14%;
+    padding-left: 15px;
+  }
+  .text-container {
+    padding: 20px;
+    width:70%;
+  }
+  .text-container button{
+    background-color: #0099ff; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width:200px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 100px;
+  }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="#">Home</a></li><!-- 
+      <li><a href="#">About</a></li> -->
+      <li><a href="#judge">Judges</a></li>
+      <li><a href="#sponsor">Sponsors</a></li>
+      <li><a href="#contact">Socials</a></li>
+    </ul>
+  </nav>
+  <div class="background" style="margin-bottom: 0px;">
+    <div class="dark-overlay" ></div>
+    <div class="content" style="backdrop-filter: blur(10px);">
+      <img src="/resource/logo.png" alt="Hackathon Logo"  class="logo">
+      <h1 style="font-size:70px;margin-bottom: 0px;">EduCathon 2024</h1>
+      <h2 style="font-size: 30px;margin-top: 10px; color: #f0b036;">March 28th-April 15th</h2>
+      <button onclick="window.open('https://forms.microsoft.com/r/Qm0KxgqkyM')">Apply as Hacker</button>
+    </div>
+  </div>
+  <div id="sponsor"class="transparent-blurred">
+    <h1 style="text-align:center;">Sponsors</h2>
+    <img height="200" style="border-radius:10px;" src="/resource/sponsor/wram.png">
+    <img height="200" style="border-radius:10px;" src="/resource/sponsor/xyz.png">
+    <img height="200" style="border-radius:10px;" src="/resource/sponsor/sk.png">
+    <br>
+    <p style="text-align:center;">Want to sponsor our event? Contact <a href="mailto:educathon.wrecker165@slmails.com">educathon.wrecker165@slmails.com</a></p>
+    <!-- Add more sponsors as needed -->
+  </div>
+  <!-- Judges Section -->
+  <div id="judge" class="transparent-blurred">
+    <h1 style="text-align:center;">Judges</h1>
+    <p style="text-align:center;">Want to be a Judge at our event? Contact <a href="mailto:educathon.wrecker165@slmails.com">educathon.wrecker165@slmails.com</a></p>
+    
+    <!-- <div  class="judge">
+      <img src="judge1.jpg" alt="Judge 1">
+      <div>
+        <h3>Judge 1 Name</h3>
+        <p>Introduction about Judge 1</p>
+      </div>
+    </div>
+    <div class="judge">
+      <img src="judge2.jpg" alt="Judge 2">
+      <div>
+        <h3>Judge 2 Name</h3>
+        <p>Introduction about Judge 2</p>
+      </div>
+    </div>
+    <div class="judge">
+      <img src="judge3.jpg" alt="Judge 3">
+      <div>
+        <h3>Judge 3 Name</h3>
+        <p>Introduction about Judge 3</p>
+      </div>
+    </div> -->
+  </div>
+
+  <!-- Sponsors Section -->
+
+
+  <!-- Contact Section -->
+  <div id="contact" class="transparent-blurred ">
+    <h1 style="text-align:center;">Socials</h1>
+    <div style="display: flex;"><center>
+      <table style="margin: 0 auto;">
+        <tr>
+          <td><div class="container" >
+            <div class="image-container">
+              <img width="100px" src="/resource/dsc.png" alt="Your Image">
+            </div>
+            <div class="text-container">
+              <h2>EduCathon Discord</h2>
+              <button onclick="window.open('https://discord.gg/uxrTGKeeDc')">Join</button>
+            </div>
+          </div></td>
+          <td><div style="margin-left:10px;" class="container">
+            <div class="image-container">
+              <img width="100px" src="/resource/dev.png" alt="Your Image">
+            </div>
+            <div class="text-container">
+              <h2>EduCathon Devpost</h2>
+              <button onclick="window.open('https://educathon.devpost.com')">Visit</button>
+            </div></td>
+        </tr>
+      </table>
+    
+  </div>
+ 
+</body>
+</html>
